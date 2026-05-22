@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Rubik } from "next/font/google";
 import "./globals.css";
+import Provider from "@/components/Hoc/Provider";
 
 const font = Rubik({
   weight:['300','400','500','700','600','800','900'],
@@ -34,7 +35,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className={`${font.className} antialiased`}>{children}</body>
+      <body className={`${font.className} antialiased`}>
+      <Provider>
+        {children}
+      </Provider>
+      </body>
     </html>
   );
 }
